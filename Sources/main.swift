@@ -1,6 +1,28 @@
 import EventKit
 import Foundation
 
+// Handle `calday init` subcommand
+if CommandLine.arguments.count > 1 && CommandLine.arguments[1] == "init" {
+    let configDir = FileManager.default.homeDirectoryForCurrentUser
+        .appendingPathComponent(".config/calday")
+    let configFile = configDir.appendingPathComponent("config.json")
+
+    if FileManager.default.fileExists(atPath: configFile.path) {
+        fputs("Config already exists: \(configFile.path)\n", stderr)
+        exit(1)
+    }
+
+    let template = """
+    {
+      "excludedCalendars": []
+    }
+    """
+    try FileManager.default.createDirectory(at: configDir, withIntermediateDirectories: true)
+    try template.write(to: configFile, atomically: true, encoding: .utf8)
+    print("Created \(configFile.path)")
+    exit(0)
+}
+
 let store = EKEventStore()
 
 // Request access to calendar
