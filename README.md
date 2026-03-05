@@ -11,9 +11,19 @@ A CLI tool that fetches today's calendar events from macOS Calendar app and outp
 
 ## Install
 
+### Homebrew
+
 ```bash
-swift build -c release
-cp .build/release/calday /usr/local/bin/
+brew tap syarihu/tap
+brew install calday
+```
+
+### Build from source
+
+```bash
+git clone https://github.com/syarihu/calday.git
+cd calday
+make install
 ```
 
 On first run, a dialog will appear requesting access to Calendar.
