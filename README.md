@@ -14,8 +14,7 @@ A CLI tool that fetches today's calendar events from macOS Calendar app and outp
 ### Homebrew
 
 ```bash
-brew tap syarihu/tap
-brew install calday
+brew install syarihu/tap/calday
 ```
 
 ### Build from source
